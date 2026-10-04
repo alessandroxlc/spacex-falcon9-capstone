@@ -39,7 +39,7 @@ from pptx.util import Emu, Inches, Pt
 # --------------------------------------------------------------------------------------
 # Configuración: cambia estos datos antes de entregar
 # --------------------------------------------------------------------------------------
-AUTHOR = "alessandroxlc"
+AUTHOR = "Diego Laureano"
 REPO_URL = "https://github.com/alessandroxlc/spacex-falcon9-capstone"
 DECK_DATE = date.today().strftime("%d/%m/%Y")
 
