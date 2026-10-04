@@ -1,0 +1,56 @@
+# Ejecuta el proyecto completo en GitHub y guarda los resultados en el repositorio:
+# notebooks con sus salidas, datos, gráficos, mapas, capturas del dashboard, la presentación .pptx
+# y el PDF "Data Science Capstone Project Report.pdf" para la entrega.
+#
+# Se lanza a mano: pestaña Actions → "Ejecutar proyecto y generar presentación" → Run workflow.
+name: Ejecutar proyecto y generar presentación
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias de Python
+        run: pip install -r requirements.txt
+
+      - name: Instalar Chromium (capturas) y LibreOffice (PDF)
+        run: |
+          python -m playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-impress fonts-crosextra-carlito
+
+      - name: Ejecutar notebooks, capturas y presentación
+        run: python scripts/run_all.py
+
+      - name: Publicar la presentación como artefacto descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: presentacion-capstone
+          path: |
+            presentation/SpaceX_Falcon9_Capstone.pptx
+            presentation/Data Science Capstone Project Report.pdf
+
+      - name: Guardar los resultados en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add notebooks data images maps results presentation
+          if git diff --cached --quiet; then
+            echo "Sin cambios que guardar"
+          else
+            git commit -m "chore: resultados de la ejecución completa del proyecto"
+            git push
+          fi

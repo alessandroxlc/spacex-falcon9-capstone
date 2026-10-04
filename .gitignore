@@ -1,0 +1,17 @@
+# Entornos y cachés de Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Bases de datos locales y temporales
+*.db
+*.sqlite
+~$*.pptx
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
