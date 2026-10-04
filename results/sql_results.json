@@ -1,0 +1,277 @@
+[
+  {
+    "task": "Sitios de lanzamiento únicos",
+    "query": "SELECT DISTINCT Launch_Site FROM SPACEXTABLE",
+    "columns": [
+      "Launch_Site"
+    ],
+    "rows": [
+      [
+        "CCAFS LC-40"
+      ],
+      [
+        "VAFB SLC-4E"
+      ],
+      [
+        "KSC LC-39A"
+      ],
+      [
+        "CCAFS SLC-40"
+      ]
+    ]
+  },
+  {
+    "task": "Sitios que empiezan por 'CCA'",
+    "query": "SELECT Date, Booster_Version, Launch_Site, Payload, PAYLOAD_MASS__KG_ FROM SPACEXTABLE WHERE Launch_Site LIKE 'CCA%' LIMIT 5",
+    "columns": [
+      "Date",
+      "Booster_Version",
+      "Launch_Site",
+      "Payload",
+      "PAYLOAD_MASS__KG_"
+    ],
+    "rows": [
+      [
+        "2010-06-04",
+        "F9 v1.0  B0003",
+        "CCAFS LC-40",
+        "Dragon Spacecraft Qualification Unit",
+        "0"
+      ],
+      [
+        "2010-12-08",
+        "F9 v1.0  B0004",
+        "CCAFS LC-40",
+        "Dragon demo flight C1, two CubeSats, barrel of Brouere cheese",
+        "0"
+      ],
+      [
+        "2012-05-22",
+        "F9 v1.0  B0005",
+        "CCAFS LC-40",
+        "Dragon demo flight C2",
+        "525"
+      ],
+      [
+        "2012-10-08",
+        "F9 v1.0  B0006",
+        "CCAFS LC-40",
+        "SpaceX CRS-1",
+        "500"
+      ],
+      [
+        "2013-03-01",
+        "F9 v1.0  B0007",
+        "CCAFS LC-40",
+        "SpaceX CRS-2",
+        "677"
+      ]
+    ]
+  },
+  {
+    "task": "Masa total de carga NASA (CRS)",
+    "query": "SELECT SUM(PAYLOAD_MASS__KG_) AS Total_Payload_Mass_kg FROM SPACEXTABLE WHERE Customer = 'NASA (CRS)'",
+    "columns": [
+      "Total_Payload_Mass_kg"
+    ],
+    "rows": [
+      [
+        "45596"
+      ]
+    ]
+  },
+  {
+    "task": "Masa media de carga F9 v1.1",
+    "query": "SELECT ROUND(AVG(PAYLOAD_MASS__KG_), 2) AS Avg_Payload_Mass_kg FROM SPACEXTABLE WHERE Booster_Version = 'F9 v1.1'",
+    "columns": [
+      "Avg_Payload_Mass_kg"
+    ],
+    "rows": [
+      [
+        "2928.4"
+      ]
+    ]
+  },
+  {
+    "task": "Primer aterrizaje exitoso en tierra",
+    "query": "SELECT MIN(Date) AS First_Successful_Ground_Landing FROM SPACEXTABLE WHERE Landing_Outcome = 'Success (ground pad)'",
+    "columns": [
+      "First_Successful_Ground_Landing"
+    ],
+    "rows": [
+      [
+        "2015-12-22"
+      ]
+    ]
+  },
+  {
+    "task": "Éxito en barcaza con carga 4.000–6.000 kg",
+    "query": "SELECT Booster_Version FROM SPACEXTABLE WHERE Landing_Outcome = 'Success (drone ship)' AND PAYLOAD_MASS__KG_ > 4000 AND PAYLOAD_MASS__KG_ < 6000",
+    "columns": [
+      "Booster_Version"
+    ],
+    "rows": [
+      [
+        "F9 FT B1022"
+      ],
+      [
+        "F9 FT B1026"
+      ],
+      [
+        "F9 FT  B1021.2"
+      ],
+      [
+        "F9 FT  B1031.2"
+      ]
+    ]
+  },
+  {
+    "task": "Resultados de misión",
+    "query": "SELECT TRIM(Mission_Outcome) AS Mission_Outcome, COUNT(*) AS Total FROM SPACEXTABLE GROUP BY TRIM(Mission_Outcome)",
+    "columns": [
+      "Mission_Outcome",
+      "Total"
+    ],
+    "rows": [
+      [
+        "Failure (in flight)",
+        "1"
+      ],
+      [
+        "Success",
+        "99"
+      ],
+      [
+        "Success (payload status unclear)",
+        "1"
+      ]
+    ]
+  },
+  {
+    "task": "Boosters con la carga máxima",
+    "query": "SELECT DISTINCT Booster_Version, PAYLOAD_MASS__KG_ FROM SPACEXTABLE WHERE PAYLOAD_MASS__KG_ = (SELECT MAX(PAYLOAD_MASS__KG_) FROM SPACEXTABLE)",
+    "columns": [
+      "Booster_Version",
+      "PAYLOAD_MASS__KG_"
+    ],
+    "rows": [
+      [
+        "F9 B5 B1048.4",
+        "15600"
+      ],
+      [
+        "F9 B5 B1049.4",
+        "15600"
+      ],
+      [
+        "F9 B5 B1051.3",
+        "15600"
+      ],
+      [
+        "F9 B5 B1056.4",
+        "15600"
+      ],
+      [
+        "F9 B5 B1048.5",
+        "15600"
+      ],
+      [
+        "F9 B5 B1051.4",
+        "15600"
+      ],
+      [
+        "F9 B5 B1049.5",
+        "15600"
+      ],
+      [
+        "F9 B5 B1060.2 ",
+        "15600"
+      ],
+      [
+        "F9 B5 B1058.3 ",
+        "15600"
+      ],
+      [
+        "F9 B5 B1051.6",
+        "15600"
+      ],
+      [
+        "F9 B5 B1060.3",
+        "15600"
+      ],
+      [
+        "F9 B5 B1049.7 ",
+        "15600"
+      ]
+    ]
+  },
+  {
+    "task": "Fallos en barcaza en 2015",
+    "query": "SELECT substr(Date, 6, 2) AS Month, Date, Booster_Version, Launch_Site, Landing_Outcome FROM SPACEXTABLE WHERE Landing_Outcome = 'Failure (drone ship)' AND substr(Date, 1, 4) = '2015'",
+    "columns": [
+      "Month",
+      "Date",
+      "Booster_Version",
+      "Launch_Site",
+      "Landing_Outcome"
+    ],
+    "rows": [
+      [
+        "01",
+        "2015-01-10",
+        "F9 v1.1 B1012",
+        "CCAFS LC-40",
+        "Failure (drone ship)"
+      ],
+      [
+        "04",
+        "2015-04-14",
+        "F9 v1.1 B1015",
+        "CCAFS LC-40",
+        "Failure (drone ship)"
+      ]
+    ]
+  },
+  {
+    "task": "Ranking de aterrizajes 2010-06-04 a 2017-03-20",
+    "query": "SELECT Landing_Outcome, COUNT(*) AS Total FROM SPACEXTABLE WHERE Date BETWEEN '2010-06-04' AND '2017-03-20' GROUP BY Landing_Outcome ORDER BY Total DESC",
+    "columns": [
+      "Landing_Outcome",
+      "Total"
+    ],
+    "rows": [
+      [
+        "No attempt",
+        "10"
+      ],
+      [
+        "Success (drone ship)",
+        "5"
+      ],
+      [
+        "Failure (drone ship)",
+        "5"
+      ],
+      [
+        "Success (ground pad)",
+        "3"
+      ],
+      [
+        "Controlled (ocean)",
+        "3"
+      ],
+      [
+        "Uncontrolled (ocean)",
+        "2"
+      ],
+      [
+        "Failure (parachute)",
+        "2"
+      ],
+      [
+        "Precluded (drone ship)",
+        "1"
+      ]
+    ]
+  }
+]

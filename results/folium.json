@@ -1,0 +1,57 @@
+{
+  "launch_sites": [
+    {
+      "Launch Site": "CCAFS LC-40",
+      "Lat": 28.56230197,
+      "Long": -80.57735648
+    },
+    {
+      "Launch Site": "CCAFS SLC-40",
+      "Lat": 28.56319718,
+      "Long": -80.57682003
+    },
+    {
+      "Launch Site": "KSC LC-39A",
+      "Lat": 28.57325457,
+      "Long": -80.64689529
+    },
+    {
+      "Launch Site": "VAFB SLC-4E",
+      "Lat": 34.63283416,
+      "Long": -120.6107455
+    }
+  ],
+  "site_outcomes": [
+    {
+      "Launch Site": "CCAFS LC-40",
+      "total": 26,
+      "exitos": 7,
+      "tasa_exito": 0.2692
+    },
+    {
+      "Launch Site": "CCAFS SLC-40",
+      "total": 7,
+      "exitos": 3,
+      "tasa_exito": 0.4286
+    },
+    {
+      "Launch Site": "KSC LC-39A",
+      "total": 13,
+      "exitos": 10,
+      "tasa_exito": 0.7692
+    },
+    {
+      "Launch Site": "VAFB SLC-4E",
+      "total": 10,
+      "exitos": 4,
+      "tasa_exito": 0.4
+    }
+  ],
+  "proximities_site": "CCAFS SLC-40",
+  "proximities_km": {
+    "Costa (playa)": 0.87,
+    "Ferrocarril (NASA Railroad)": 1.28,
+    "Autopista (Samuel C. Phillips Pkwy)": 1.0,
+    "Ciudad (Titusville)": 23.21
+  }
+}

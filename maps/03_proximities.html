@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3e76d12e5123116d68a0d2d104790930 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3e76d12e5123116d68a0d2d104790930" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3e76d12e5123116d68a0d2d104790930 = L.map(
+                "map_3e76d12e5123116d68a0d2d104790930",
+                {
+                    center: [28.56319718, -80.57682003],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9cb9109d07dfcf6a716e4805d402b8fd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9cb9109d07dfcf6a716e4805d402b8fd.addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var mouse_position_b84e098e3291b84e5468d83c1fcd65be = new L.Control.MousePosition(
+                {
+  "position": "topright",
+  "separator": " Long: ",
+  "emptyString": "NaN",
+  "lngFirst": false,
+  "numDigits": 5,
+  "prefix": "Lat:",
+}
+            );
+            mouse_position_b84e098e3291b84e5468d83c1fcd65be.options["latFormatter"] =
+                undefined;
+            mouse_position_b84e098e3291b84e5468d83c1fcd65be.options["lngFormatter"] =
+                undefined;
+            map_3e76d12e5123116d68a0d2d104790930.addControl(mouse_position_b84e098e3291b84e5468d83c1fcd65be);
+        
+    
+            var marker_a2c08a2a4c011fce3c14f716ea92d7ca = L.marker(
+                [28.56319718, -80.57682003],
+                {
+}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var icon_a739faa6f4496065faf3f45f76872744 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "rocket",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59375c5b6dcce8f917607bc2644f1e74 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c8b8c5e70b51ae8c5996daf8debe1bb = $(`<div id="html_4c8b8c5e70b51ae8c5996daf8debe1bb" style="width: 100.0%; height: 100.0%;">CCAFS SLC-40</div>`)[0];
+                popup_59375c5b6dcce8f917607bc2644f1e74.setContent(html_4c8b8c5e70b51ae8c5996daf8debe1bb);
+            
+        
+
+        marker_a2c08a2a4c011fce3c14f716ea92d7ca.bindPopup(popup_59375c5b6dcce8f917607bc2644f1e74)
+        ;
+
+        
+    
+    
+                marker_a2c08a2a4c011fce3c14f716ea92d7ca.setIcon(icon_a739faa6f4496065faf3f45f76872744);
+            
+    
+            var marker_eedb958153cd881e392caeae098702c1 = L.marker(
+                [28.56342, -80.56794],
+                {
+}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var div_icon_e4b552c8cd6228519af382bdfc589265 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color:#1f77b4;\"\u003e\u003cb\u003eCosta (playa): 0.87 km\u003c/b\u003e\u003c/div\u003e",
+  "iconSize": [220, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_eedb958153cd881e392caeae098702c1.setIcon(div_icon_e4b552c8cd6228519af382bdfc589265);
+            
+    
+            var poly_line_990ce66c449712c139410133234fce71 = L.polyline(
+                [[28.56319718, -80.57682003], [28.56342, -80.56794]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var marker_a83e26019d7e38ac222cf5a95156a83e = L.marker(
+                [28.57206, -80.58525],
+                {
+}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var div_icon_fe2f189b052b1b38744e604987f429b6 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color:#2ca02c;\"\u003e\u003cb\u003eFerrocarril (NASA Railroad): 1.28 km\u003c/b\u003e\u003c/div\u003e",
+  "iconSize": [220, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_a83e26019d7e38ac222cf5a95156a83e.setIcon(div_icon_fe2f189b052b1b38744e604987f429b6);
+            
+    
+            var poly_line_d7960087ced5fd47f99a29d9e21096bb = L.polyline(
+                [[28.56319718, -80.57682003], [28.57206, -80.58525]],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2ca02c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var marker_5018f4df31327cf3936baafe15e3d51e = L.marker(
+                [28.56276, -80.587],
+                {
+}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var div_icon_4a16c65847e148153c96fdc04e188e49 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color:#9467bd;\"\u003e\u003cb\u003eAutopista (Samuel C. Phillips Pkwy): 1.00 km\u003c/b\u003e\u003c/div\u003e",
+  "iconSize": [220, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_5018f4df31327cf3936baafe15e3d51e.setIcon(div_icon_4a16c65847e148153c96fdc04e188e49);
+            
+    
+            var poly_line_e8d403d9c31324407e6731b0db1aa409 = L.polyline(
+                [[28.56319718, -80.57682003], [28.56276, -80.587]],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#9467bd", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var marker_9e89cc91f787cad8d78b4bb7803651f5 = L.marker(
+                [28.612, -80.80788],
+                {
+}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+    
+            var div_icon_198e4c9c199b22f2893b19f8f8c33692 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color:#d62728;\"\u003e\u003cb\u003eCiudad (Titusville): 23.21 km\u003c/b\u003e\u003c/div\u003e",
+  "iconSize": [220, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_9e89cc91f787cad8d78b4bb7803651f5.setIcon(div_icon_198e4c9c199b22f2893b19f8f8c33692);
+            
+    
+            var poly_line_ff6386130b826c981181bcbd02665d3c = L.polyline(
+                [[28.56319718, -80.57682003], [28.612, -80.80788]],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_3e76d12e5123116d68a0d2d104790930);
+        
+</script>
+</html>

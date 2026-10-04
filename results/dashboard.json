@@ -1,0 +1,74 @@
+{
+  "by_site": {
+    "CCAFS LC-40": {
+      "total": 26.0,
+      "exitos": 7.0,
+      "tasa_exito": 0.2692,
+      "cuota_exitos": 0.2917
+    },
+    "CCAFS SLC-40": {
+      "total": 7.0,
+      "exitos": 3.0,
+      "tasa_exito": 0.4286,
+      "cuota_exitos": 0.125
+    },
+    "KSC LC-39A": {
+      "total": 13.0,
+      "exitos": 10.0,
+      "tasa_exito": 0.7692,
+      "cuota_exitos": 0.4167
+    },
+    "VAFB SLC-4E": {
+      "total": 10.0,
+      "exitos": 4.0,
+      "tasa_exito": 0.4,
+      "cuota_exitos": 0.1667
+    }
+  },
+  "top_share_site": "KSC LC-39A",
+  "top_rate_site": "KSC LC-39A",
+  "success_rate_by_payload_bin": {
+    "0–2k": {
+      "launches": 13,
+      "rate": 0.2308
+    },
+    "2k–4k": {
+      "launches": 21,
+      "rate": 0.619
+    },
+    "4k–6k": {
+      "launches": 13,
+      "rate": 0.3846
+    },
+    "6k–8k": {
+      "launches": 4,
+      "rate": 0.0
+    },
+    "8k–10k": {
+      "launches": 5,
+      "rate": 0.6
+    }
+  },
+  "success_rate_by_booster": {
+    "B4": {
+      "launches": 11,
+      "rate": 0.5455
+    },
+    "B5": {
+      "launches": 1,
+      "rate": 1.0
+    },
+    "FT": {
+      "launches": 24,
+      "rate": 0.6667
+    },
+    "v1.0": {
+      "launches": 5,
+      "rate": 0.0
+    },
+    "v1.1": {
+      "launches": 15,
+      "rate": 0.0667
+    }
+  }
+}

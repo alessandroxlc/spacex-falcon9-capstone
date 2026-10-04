@@ -1,0 +1,24 @@
+{
+  "source": "IBM dataset_part_1.csv (respaldo)",
+  "rows": 90,
+  "columns": [
+    "FlightNumber",
+    "Date",
+    "BoosterVersion",
+    "PayloadMass",
+    "Orbit",
+    "LaunchSite",
+    "Outcome",
+    "Flights",
+    "GridFins",
+    "Reused",
+    "Legs",
+    "LandingPad",
+    "Block",
+    "ReusedCount",
+    "Serial",
+    "Longitude",
+    "Latitude"
+  ],
+  "payload_mean_imputed_kg": 6104.96
+}

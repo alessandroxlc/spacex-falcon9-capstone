@@ -1,0 +1,99 @@
+{
+  "test_size": 18,
+  "train_size": 72,
+  "n_features": 80,
+  "models": {
+    "Regresión logística": {
+      "best_params": {
+        "C": 1,
+        "penalty": "l2",
+        "solver": "lbfgs"
+      },
+      "cv_accuracy": 0.8214,
+      "test_accuracy": 0.8333,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889,
+      "confusion_matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    "SVM": {
+      "best_params": {
+        "C": 1.0,
+        "gamma": 0.03162277660168379,
+        "kernel": "sigmoid"
+      },
+      "cv_accuracy": 0.8482,
+      "test_accuracy": 0.8333,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889,
+      "confusion_matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    "Árbol de decisión": {
+      "best_params": {
+        "criterion": "entropy",
+        "max_depth": 12,
+        "max_features": "log2",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "splitter": "best"
+      },
+      "cv_accuracy": 0.8339,
+      "test_accuracy": 0.9444,
+      "precision": 0.9231,
+      "recall": 1.0,
+      "f1": 0.96,
+      "confusion_matrix": [
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    "KNN": {
+      "best_params": {
+        "algorithm": "auto",
+        "n_neighbors": 6,
+        "p": 1
+      },
+      "cv_accuracy": 0.8339,
+      "test_accuracy": 0.8333,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889,
+      "confusion_matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          12
+        ]
+      ]
+    }
+  },
+  "best_model": "Árbol de decisión"
+}

@@ -1,0 +1,39 @@
+{
+  "rows": 90,
+  "success_rate": 0.6667,
+  "launches_by_site": {
+    "CCAFS SLC 40": 55,
+    "KSC LC 39A": 22,
+    "VAFB SLC 4E": 13
+  },
+  "launches_by_orbit": {
+    "GTO": 27,
+    "ISS": 21,
+    "VLEO": 14,
+    "PO": 9,
+    "LEO": 7,
+    "SSO": 5,
+    "MEO": 3,
+    "ES-L1": 1,
+    "HEO": 1,
+    "SO": 1,
+    "GEO": 1
+  },
+  "landing_outcomes": {
+    "True ASDS": 41,
+    "None None": 19,
+    "True RTLS": 14,
+    "False ASDS": 6,
+    "True Ocean": 5,
+    "False Ocean": 2,
+    "None ASDS": 2,
+    "False RTLS": 1
+  },
+  "bad_outcomes": [
+    "False ASDS",
+    "False Ocean",
+    "False RTLS",
+    "None ASDS",
+    "None None"
+  ]
+}
