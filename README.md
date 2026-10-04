@@ -38,9 +38,10 @@ Se construyó una tubería de ciencia de datos completa sobre los lanzamientos d
 * **Modelado predictivo** con cuatro clasificadores (regresión logística, SVM, árbol de decisión y KNN)
   optimizados con `GridSearchCV`.
 
-Los modelos alcanzan alrededor del **83 % de exactitud** sobre los 18 lanzamientos del conjunto de prueba
-(83,33 % = 15 de 18 en la configuración del laboratorio de IBM). Las cifras definitivas de cada modelo se
-guardan en [`results/model_results.json`](results/) al ejecutar el notebook 07.
+Sobre los 18 lanzamientos del conjunto de prueba, la regresión logística, la SVM y KNN aciertan **15 de 18
+(83,33 %)** y el **árbol de decisión 17 de 18 (94,44 %)**. En validación cruzada los cuatro modelos quedan
+entre el 82 % y el 85 %. Las cifras de cada modelo están en
+[`results/model_results.json`](results/model_results.json).
 
 ## Contexto y problema
 
@@ -120,26 +121,27 @@ spacex-falcon9-capstone/
 **Analítica interactiva**
 
 * Todos los sitios están junto a la costa, cerca de ferrocarril y carreteras, y lejos de las ciudades.
-* El dashboard permite comparar sitios y rangos de carga; KSC LC-39A destaca por su tasa de éxito.
+* KSC LC-39A es el sitio con más éxitos (41,7 % del total) y la mayor tasa de éxito (76,9 %).
 
 **Modelos**
 
-| Modelo | Exactitud en prueba |
-|---|---|
-| Regresión logística | ≈ 83 % |
-| SVM | ≈ 83 % |
-| Árbol de decisión | ≈ 83 % (varía con la semilla) |
-| KNN | ≈ 83 % |
+| Modelo | Validación cruzada (cv=10) | Exactitud en prueba | Mejores hiperparámetros |
+|---|---|---|---|
+| Regresión logística | 82,1 % | 83,33 % | C=1, penalty=l2 |
+| SVM | 84,8 % | 83,33 % | C=1, gamma=0,0316, kernel=sigmoid |
+| **Árbol de decisión** | 83,4 % | **94,44 %** | criterion=entropy, max_depth=12, max_features=log2 |
+| KNN | 83,4 % | 83,33 % | n_neighbors=6, p=1 |
 
-Con solo 18 casos de prueba, cada acierto vale 5,6 puntos y varios modelos empatan; se desempata con la
-exactitud de validación cruzada. El error más frecuente es el **falso positivo** (predecir que aterriza
-cuando no lo hizo). Los valores exactos están en `results/model_results.json` y en la presentación.
+**Mejor modelo: árbol de decisión** (17 de 18 aciertos; matriz de confusión: 12 VP, 5 VN, 1 FP, 0 FN).
+Con solo 18 casos de prueba cada acierto vale 5,6 puntos, así que la diferencia debe leerse con cautela:
+en validación cruzada los cuatro modelos rinden de forma parecida. El error más frecuente en todos ellos
+es el **falso positivo** (predecir que aterriza cuando no lo hizo).
 
 ## Conclusiones e ideas innovadoras
 
 1. La **experiencia** (número de vuelo), la **órbita** y el **sitio** son las variables más informativas.
-2. Un modelo sencillo acierta la gran mayoría de los lanzamientos de prueba: suficiente para una primera
-   estimación del coste de una misión.
+2. Modelos sencillos aciertan entre el 83 % y el 94 % de los lanzamientos de prueba: suficiente para una
+   primera estimación del coste de una misión.
 3. Próximos pasos propuestos: añadir lanzamientos posteriores a 2020, incorporar meteorología y estado del
    mar, estimar probabilidades calibradas (coste esperado), validar de forma temporal, explicar cada
    predicción (SHAP) y publicar el modelo como API conectada al dashboard.
@@ -185,4 +187,4 @@ Para abrir el dashboard: `python dashboard/spacex_dash_app.py` y visita <http://
 
 ---
 
-Autor: [alessandroxlc](https://github.com/alessandroxlc) · Licencia [MIT](LICENSE)
+Autor: Diego Laureano ([alessandroxlc](https://github.com/alessandroxlc)) · Licencia [MIT](LICENSE)

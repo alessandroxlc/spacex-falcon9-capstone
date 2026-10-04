@@ -493,6 +493,12 @@ def build() -> Path:
 
     best = models["best_model"]
     best_m = models["models"][best]
+    test_scores = [m["test_accuracy"] for m in models["models"].values()]
+    tie = test_scores.count(max(test_scores)) > 1
+    criterion = "desempate por validación cruzada" if tie else "mayor exactitud en prueba"
+    cv_scores = [m["cv_accuracy"] for m in models["models"].values()]
+    cv_range = f"{pct(min(cv_scores), 0)}–{pct(max(cv_scores), 0)}"
+    point = f"{100 / models['test_size']:.1f}".replace(".", ",")
     test_acc = best_m["test_accuracy"]
     n_launches = (wrangling or eda or {}).get("rows")
     success_rate = (wrangling or {}).get("success_rate")
@@ -543,7 +549,7 @@ def build() -> Path:
     ], size=16, space_after=12)
     panel_x = Inches(8.3)
     d.box(s, panel_x, CONTENT_TOP, Inches(4.43), Inches(5.1), fill=NAVY)
-    d.stat(s, pct(test_acc, 2), "exactitud en el conjunto de prueba", panel_x + Inches(0.4),
+    d.stat(s, pct(test_acc, 2), f"exactitud en prueba del mejor modelo ({best.lower()})", panel_x + Inches(0.4),
            CONTENT_TOP + Inches(0.3), Inches(3.8), label_color=WHITE)
     d.stat(s, "4", "modelos de clasificación comparados", panel_x + Inches(0.4), CONTENT_TOP + Inches(1.9),
            Inches(3.8), color=WHITE, label_color=SOFT)
@@ -752,7 +758,8 @@ def build() -> Path:
         ("Analítica interactiva", ["Todos los sitios están junto a la costa y cerca de infraestructura de transporte.",
                                    "El dashboard compara sitios y rangos de carga en segundos."]),
         ("Análisis predictivo", [f"Exactitud en prueba de {pct(test_acc, 2)} en {models['test_size']} lanzamientos.",
-                                 f"Mejor modelo: {best} (desempate por validación cruzada)."]),
+                                 f"Mejor modelo: {best} ({criterion}).",
+                                 f"En validación cruzada los 4 modelos quedan entre {cv_range}."]),
     ]
     for i, (title, lines) in enumerate(blocks):
         x = MARGIN + i * Inches(4.1)
@@ -900,9 +907,11 @@ def build() -> Path:
         best_bin = max(bins, key=lambda k: bins[k]["rate"])
         boosters = dash["success_rate_by_booster"]
         best_booster = max(boosters, key=lambda k: boosters[k]["rate"])
-        scatter_text = [f"Versión de booster con mayor tasa de éxito: {best_booster} ({pct(boosters[best_booster]['rate'], 0)}).",
+        scatter_text = [f"Versión de booster con mayor tasa de éxito: {best_booster} ({pct(boosters[best_booster]['rate'], 0)}, "
+                        f"{boosters[best_booster]['launches']} lanzamiento(s)).",
                         "Cada color es una versión del booster; arriba aterrizó (1), abajo no (0)."]
-        range_text = [f"Rango de carga con mayor tasa de éxito: {best_bin} kg ({pct(bins[best_bin]['rate'], 0)}).",
+        range_text = [f"Rango de carga con mayor tasa de éxito: {best_bin} kg ({pct(bins[best_bin]['rate'], 0)}, "
+                      f"{bins[best_bin]['launches']} lanzamientos).",
                       "El control deslizante filtra la masa y el gráfico se actualiza al instante."]
     else:
         scatter_text = ["Relación entre masa de carga y resultado, por versión del booster."]
@@ -930,8 +939,9 @@ def build() -> Path:
     d.table(s, ["Modelo", "Mejores hiperparámetros"], rows, Inches(8.3), CONTENT_TOP, Inches(4.43),
             col_widths=[1.4, 2.6], size=12, row_h=Inches(0.62))
     d.rich(s, Inches(8.3), CONTENT_TOP + Inches(3.75), Inches(4.43), Inches(1.4), [
-        [("Mejor modelo: ", True), (best, False)],
-        [("Criterio: ", True), ("mayor exactitud en prueba y, en empate, en validación cruzada.", False)],
+        [("Mejor modelo: ", True), (f"{best} ({pct(test_acc, 2)} en prueba).", False)],
+        [("Ojo: ", True), (f"con {models['test_size']} casos de prueba, un acierto vale {point} puntos; "
+                           f"en validación cruzada los 4 modelos quedan entre {cv_range}.", False)],
     ], size=14)
 
     s = d.content_slide(f"Matriz de confusión: {best}", kicker="Predictive Analysis Results · Confusion Matrix", notes=(

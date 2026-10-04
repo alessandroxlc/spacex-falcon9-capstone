@@ -29,10 +29,12 @@ rival (el curso la llama "SpaceY") y quieres saber cuánto ofertar para ganarle 
 | 8. Machine learning | Enseñar a 4 modelos a predecir el aterrizaje y ver cuál acierta más | `notebooks/07_...` |
 | 9. Presentación | Resumir todo en diapositivas (se genera sola) | `presentation/generate_presentation.py` |
 
-## 3. ¿Qué es "83,33 % de exactitud"?
+## 3. ¿Qué significan 83,33 % y 94,44 % de exactitud?
 
 Se apartan 18 lanzamientos que los modelos **no ven** durante el aprendizaje (el "examen"). Después se les
-pide que adivinen si esos 18 aterrizaron. Acertar 15 de 18 es 83,33 %.
+pide que adivinen si esos 18 aterrizaron. Acertar 15 de 18 es 83,33 % (regresión logística, SVM y KNN);
+acertar 17 de 18 es 94,44 % (árbol de decisión, el mejor). Como el examen es tan corto, cada acierto vale
+5,6 puntos: por eso también se mira la validación cruzada, donde los cuatro modelos sacan entre 82 % y 85 %.
 
 La **matriz de confusión** es la tabla de aciertos y errores de ese examen:
 
